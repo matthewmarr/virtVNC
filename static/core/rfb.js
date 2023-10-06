@@ -339,6 +339,15 @@ export default class RFB extends EventTargetMixin {
         this.sendKey(KeyTable.XK_Control_L, "ControlLeft", false);
     }
 
+    sendF8() {
+        if (this._rfb_connection_state !== 'connected' || this._viewOnly) { return; }
+        Log.Info("Sending F8");
+        console.log("hi-jacking this button");
+        this.sendKey(KeyTable.XK_F8, "F8", true);
+        this.sendKey(KeyTable.XK_F8, "F8", false);
+    }
+
+
     machineShutdown() {
         this._xvpOp(1, 2);
     }

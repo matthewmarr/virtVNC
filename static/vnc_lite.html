@@ -50,6 +50,15 @@
             cursor: pointer;
         }
 
+        #sendF8Button {
+            position: fixed;
+            top: 0px;
+            right: 100px;
+            border: 1px outset;
+            padding: 5px 5px 4px 5px;
+            cursor: pointer;
+        }
+
         #screen {
             flex: 1; /* fill remaining space */
             overflow: hidden;
@@ -107,6 +116,11 @@
             return false;
         }
 
+        function sendF8() {
+            rfb.sendF8();
+            return false;
+        }
+
         // Show a status text in the top bar
         function status(text) {
             document.getElementById('status').textContent = text;
@@ -135,6 +149,9 @@
 
         document.getElementById('sendCtrlAltDelButton')
             .onclick = sendCtrlAltDel;
+
+        document.getElementById('sendF8Button')
+            .onclick = sendF8;
 
         // Read parameters specified in the URL query string
         // By default, use the host and port of server that served this file
@@ -181,6 +198,7 @@
 <body>
     <div id="top_bar">
         <div id="status">Loading</div>
+        <div id="sendF8Button">Send F8</div>
         <div id="sendCtrlAltDelButton">Send CtrlAltDel</div>
     </div>
     <div id="screen">
